@@ -74,8 +74,7 @@ func testSomePerformance() {
 我们可以选择不同的Metrics观测结果：
 ![Performance Result](multi-performance-result.png)
 
-## Measuring App Impact in the Field
-### 
+### Measuring App Impact in the Field 
 有些时候，我们需要搜集用户在使用App时的性能指标，以往各大厂商的做法可能是自己实现一套计时打点系统。在关键处埋点，搜集一定数据后再传回到服务器上以供分析。
 现在我们可以使用Apple提供的`MetricKit`来帮助我们实现这样的功能。
 
