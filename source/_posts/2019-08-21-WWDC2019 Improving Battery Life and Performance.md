@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'WWDC2019 Improving Battery Life and Performance'
+title: 'WWDC2019 - Improving Battery Life and Performance'
 categories: Tech
 tags:
   - iOS
@@ -9,6 +9,7 @@ tags:
 
 这一个Session主要是讲测试工具。介绍了在App的各个阶段，我们可以使用Apple提供的各种工具来帮助我们做Testing，发现一些潜在的问题。
 首先我们要知道，需要Improve Battery Life and Performance就不可避免的要搜集一些Metrics(指标)，只有有了Metrics，才能对比出好坏。
+<!-- more -->
 开头介绍了一个App从开发到上线会经历三个阶段：
 `Development and Testing` -> `Beta` -> `Public Release` 
 在这三个阶段，我们可以利用Apple提供的不同的工具来搜集metrics，从而达到发现问题解决问题的目的。
