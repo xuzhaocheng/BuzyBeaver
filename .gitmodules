@@ -1,3 +1,6 @@
 [submodule "themes/next"]
 	path = themes/next
 	url = https://github.com/xuzhaocheng/hexo-theme-next.git
+[submodule "source/_post"]
+	path = source/_post
+	url = https://github.com/xuzhaocheng/Post.git
