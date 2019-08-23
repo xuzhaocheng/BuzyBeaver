@@ -24,6 +24,8 @@ install:
 script:
 - hexo clean
 - hexo generate
+
+after_success:
 - rsync -az -vv --delete -e 'ssh -p 26117' public/ www-data@89.208.242.193:/var/www/blog
 
 addons:
