@@ -24,18 +24,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
       
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+          
+      - name: Install dependencies
         run: |
           npm install -g hexo-cli
           npm install
-          git submodule init
-          git submodule update
+          
+      - name: Generate blog
+        run: |
           hexo clean
           hexo generate
+
+   
+         
