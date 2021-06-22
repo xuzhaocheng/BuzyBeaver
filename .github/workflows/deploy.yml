@@ -45,6 +45,7 @@ jobs:
       - name: Config Env
         run: |
           mkdir -p ~/.ssh
+          echo ${SSH_KNOWN_HOSTS}
           echo ${{ secrets.BEAVER_PRI_KEY }} > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           echo "${SSH_KNOWN_HOSTS}:${SSH_KNOWN_HOSTS_PORT}">> ~/.ssh/known_hosts
