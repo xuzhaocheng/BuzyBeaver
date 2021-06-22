@@ -23,31 +23,32 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        with:
-          submodules: 'true'
+     # - uses: actions/checkout@v2
+     #   with:
+     #     submodules: 'true'
       
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
+     # - name: Use Node.js 12
+     #   uses: actions/setup-node@v1
+     #   with:
+     #     node-version: 12
           
-      - name: Install dependencies
-        run: |
-          npm install -g hexo-cli
-          npm install
+    #  - name: Install dependencies
+     #   run: |
+      #    npm install -g hexo-cli
+       #   npm install
           
-      - name: Generate blog
-        run: |
-          hexo clean
-          hexo generate
+     # - name: Generate blog
+     #   run: |
+     #     hexo clean
+     #     hexo generate
           
       - name: Config Env
         run: |
           mkdir ~/.ssh
-          echo "aaa" > ~/.ssh/id_rsa
+          echo "${DEPLOY_PRIVATE_KEY}" > ~/.ssh/id_rsa
           
         env:
+           DEPLOY_PRIVATE_KEY: ${{secrets.BEAVER_PRI_KEY}}
            SSH_KNOWN_HOSTS: ${{secrets.DEPLOY_SERVER}}
            SSH_KNOWN_HOSTS_PORT: ${{secrets.DEPLOY_SERVER_PORT}}
    
