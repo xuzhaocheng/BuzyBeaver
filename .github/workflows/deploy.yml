@@ -44,13 +44,8 @@ jobs:
           
       - name: Config Env
         run: |
-          mkdir -p ~/.ssh/
-          echo "aaa" > ../private.key
-          #echo ${{ secrets.BEAVER_PRI_KEY }} > ../private.key
-          #chmod 600 ../private.key
-          #echo "${SSH_KNOWN_HOSTS}:${SSH_KNOWN_HOSTS_PORT}" > ~/.ssh/known_hosts
-          #rsync -az -vv --delete -e 'ssh -p ${SSH_KNOWN_HOSTS_PORT}' public/ www-data@${SSH_KNOWN_HOSTS}:/var/www/blog
-          
+          mkdir ~/.ssh
+          echo "aaa" > ~/.ssh/id_rsa
           
         env:
            SSH_KNOWN_HOSTS: ${{secrets.DEPLOY_SERVER}}
