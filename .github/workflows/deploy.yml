@@ -45,7 +45,6 @@ jobs:
       - name: Config Env
         run: |
           mkdir -p ~/.ssh
-          echo ${{ secrets.BEAVER_PRI_KEY }} > ~/.ssh/id_rsa
           
           
         env:
