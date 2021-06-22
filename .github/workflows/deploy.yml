@@ -44,7 +44,11 @@ jobs:
           
       - name: Config Env
         run: |
-          mkdir -p ~/.ssh
+          mkdir -p ~/.ssh/
+          echo ${{ secrets.BEAVER_PRI_KEY }} > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "${SSH_KNOWN_HOSTS}:${SSH_KNOWN_HOSTS_PORT}">> ~/.ssh/known_hosts
+          rsync -az -vv --delete -e 'ssh -p ${SSH_KNOWN_HOSTS_PORT}' public/ www-data@${SSH_KNOWN_HOSTS}:/var/www/blog
           
           
         env:
