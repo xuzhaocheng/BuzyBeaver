@@ -22,16 +22,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           path: 'blog'
           submodules: 'true'
-      
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
           
       - name: Install dependencies
         run: |
@@ -41,7 +42,7 @@ jobs:
       - name: Generate blog
         run: |
           pwd
-          cd ${{ github.workspace }}/blog
+          ls ${{ github.workspace }}/blog
           hexo clean
    
          
