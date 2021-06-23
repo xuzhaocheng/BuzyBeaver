@@ -49,7 +49,7 @@ jobs:
           path: blog/public/
           remote_path: /var/www/blog
           remote_host: ${{secrets.DEPLOY_SERVER}}
-          remote_user: www-data
+          remote_user: ${{secrets.DEPLOY_USER}}
           remote_port: ${{secrets.DEPLOY_SERVER_PORT}}
           remote_key: ${{secrets.DEPLOY_PRI_KEY}}
 
