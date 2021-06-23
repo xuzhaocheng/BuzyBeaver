@@ -48,7 +48,7 @@ jobs:
         uses: burnett01/rsync-deployments@4.1
         with:
           switches: -az -vv --delete
-          path: ${{ github.workspace }}/blog/public/
+          path: blog/public/
           remote_path: /var/www/blog
           remote_host: ${{secrets.DEPLOY_SERVER}}
           remote_user: www-data
