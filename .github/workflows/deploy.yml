@@ -51,7 +51,7 @@ jobs:
           remote_host: ${{secrets.DEPLOY_SERVER}}
           remote_user: www-data
           remote_port: ${{secrets.DEPLOY_SERVER_PORT}}
-          remote_key: ${{secrets.BEAVER_PRI_KEY}}
+          remote_key: ${{secrets.DEPLOY_PRI_KEY}}
 
    
          
