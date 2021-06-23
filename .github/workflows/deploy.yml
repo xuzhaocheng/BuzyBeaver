@@ -36,6 +36,7 @@ jobs:
           
       - name: Generate blog
         run: |
+          ls /github/workspace
           cd ${{ github.workspace }}/blog
           pwd
           npm install -g hexo-cli
