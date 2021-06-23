@@ -34,15 +34,12 @@ jobs:
           path: 'blog'
           submodules: 'true'
           
-      - name: Install dependencies
-        run: |
-          npm install -g hexo-cli
-          npm install
-          
       - name: Generate blog
         run: |
           pwd
-          ls ${{ github.workspace }}/blog
+          cd ${{ github.workspace }}/blog
+          npm install -g hexo-cli
+          npm install
           hexo clean
    
          
