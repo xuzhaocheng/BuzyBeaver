@@ -22,27 +22,27 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        with:
-          path: 'blog'
-          submodules: 'true'
-      
+    
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
           node-version: 12
           
-      - name: Install dependencies
-        run: |
-          npm install -g hexo-cli
-          npm install
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          path: 'blog'
+          submodules: 'true'
           
       - name: Generate blog
         run: |
+          cd ${{ github.workspace }}/blog
+          pwd
+          npm install -g hexo-cli
+          npm install
           hexo clean
           hexo generate
-          
+      
       - uses: actions/checkout@v2
       - name: rsync deployments
         uses: burnett01/rsync-deployments@4.1
