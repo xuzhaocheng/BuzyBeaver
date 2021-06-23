@@ -22,40 +22,37 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-          
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           path: 'blog'
           submodules: 'true'
+      
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          
+      - name: Install dependencies
+        run: |
+          npm install -g hexo-cli
+          npm install
           
       - name: Generate blog
         run: |
-          cd ${{ github.workspace }}/blog
-          npm install -g hexo-cli
-          npm install
           hexo clean
           hexo generate
-      
+          
       - uses: actions/checkout@v2
       - name: rsync deployments
-        uses: up9cloud/action-rsync@v1.1
-        env:
-          HOST: ${{secrets.DEPLOY_SERVER}}
-          KEY: ${{secrets.BEAVER_PRI_KEY}}
-          TARGET: /var/www/blog
-
-          VERBOSE: true
-          USER: www-data
-          #PORT: ${{secrets.DEPLOY_SERVER_PORT}}
-          ARGS: -az -vv --delete
-          SSH_ARGS: '-p ${{secrets.DEPLOY_SERVER_PORT}} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-          SOURCE: ${{ github.workspace }}/blog/public/
-  
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -az -vv --delete
+          path: blog/public/
+          remote_path: /var/www/blog
+          remote_host: ${{secrets.DEPLOY_SERVER}}
+          remote_user: www-data
+          remote_port: ${{secrets.DEPLOY_SERVER_PORT}}
+          remote_key: ${{secrets.BEAVER_PRI_KEY}}
    
          
