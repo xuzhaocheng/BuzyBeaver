@@ -55,6 +55,7 @@ jobs:
           remote_port: ${{secrets.DEPLOY_SERVER_PORT}}
           remote_key: ${{secrets.BEAVER_PRI_KEY}}
       - run: |
+          pwd
           ls ${{ github.workspace }}
    
          
