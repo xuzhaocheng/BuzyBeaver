@@ -43,7 +43,7 @@ jobs:
           hexo clean
           hexo generate
       
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - name: rsync deployments
         uses: burnett01/rsync-deployments@4.1
         with:
