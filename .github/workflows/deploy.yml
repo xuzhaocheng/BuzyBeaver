@@ -40,6 +40,8 @@ jobs:
           
       - name: Generate blog
         run: |
+          pwd
+          cd ${{ github.workspace }}/blog
           hexo clean
    
          
