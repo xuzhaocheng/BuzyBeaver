@@ -52,9 +52,9 @@ jobs:
 
           VERBOSE: true
           USER: www-data
-          PORT: ${{secrets.DEPLOY_SERVER_PORT}}
+          #PORT: ${{secrets.DEPLOY_SERVER_PORT}}
           ARGS: -az -vv --delete
-          SSH_ARGS: '-p 2222 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+          SSH_ARGS: '-p ${{secrets.DEPLOY_SERVER_PORT}} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
           SOURCE: ${{ github.workspace }}/blog/public/
   
    
