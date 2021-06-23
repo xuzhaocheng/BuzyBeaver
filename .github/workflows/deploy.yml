@@ -37,13 +37,11 @@ jobs:
       - name: Generate blog
         run: |
           cd ${{ github.workspace }}/blog
-          pwd
           npm install -g hexo-cli
           npm install
           hexo clean
           hexo generate
-      
-      - uses: actions/checkout@v1
+    
       - name: rsync deployments
         uses: burnett01/rsync-deployments@4.1
         with:
@@ -54,8 +52,6 @@ jobs:
           remote_user: www-data
           remote_port: ${{secrets.DEPLOY_SERVER_PORT}}
           remote_key: ${{secrets.BEAVER_PRI_KEY}}
-      - run: |
-          pwd
-          ls ${{ github.workspace }}
+
    
          
