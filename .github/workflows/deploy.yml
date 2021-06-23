@@ -36,13 +36,12 @@ jobs:
           
       - name: Generate blog
         run: |
-          ls /github/workspace
           cd ${{ github.workspace }}/blog
-          pwd
           npm install -g hexo-cli
           npm install
           hexo clean
           hexo generate
+          ls ${{ github.workspace }}/blog
       
       - uses: actions/checkout@v2
       - name: rsync deployments
