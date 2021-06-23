@@ -41,18 +41,5 @@ jobs:
       - name: Generate blog
         run: |
           hexo clean
-          hexo generate
-          
-      - uses: actions/checkout@v2
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@4.1
-        with:
-          switches: -az -vv --delete
-          path: blog/public/
-          remote_path: /var/www/blog
-          remote_host: ${{secrets.DEPLOY_SERVER}}
-          remote_user: www-data
-          remote_port: ${{secrets.DEPLOY_SERVER_PORT}}
-          remote_key: ${{secrets.BEAVER_PRI_KEY}}
    
          
