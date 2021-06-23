@@ -54,5 +54,7 @@ jobs:
           remote_user: www-data
           remote_port: ${{secrets.DEPLOY_SERVER_PORT}}
           remote_key: ${{secrets.BEAVER_PRI_KEY}}
+      - run: |
+          ls ${{ github.workspace }}
    
          
